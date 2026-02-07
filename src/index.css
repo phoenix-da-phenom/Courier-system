@@ -1,0 +1,92 @@
+:root {
+    --background: #ebeae8;
+    /*rgba(235, 234, 232)*/
+    --secondary: #d89067/*rgba(30, 132, 139)*/
+    --primary: #1e848b
+}
+
+
+/* Background utilities */
+
+.bg-primary {
+    background-color: var(--primary);
+}
+
+.bg-secondary {
+    background-color: var(--secondary);
+}
+
+.bg-background {
+    background-color: var(--background);
+}
+
+
+/* Text utilities */
+
+.text-primary {
+    color: var(--primary);
+}
+
+.text-secondary {
+    color: var(--secondary);
+}
+
+
+/* Border utilities */
+
+.border-primary {
+    border-color: var(--primary);
+}
+
+@import "tailwindcss";
+* {
+    box-sizing: border-box;
+}
+
+.my-container {
+    padding: 0 50px;
+}
+
+.awesome-slider {
+    height: 450px;
+}
+
+.slide-caption {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    color: white;
+    max-width: 500px;
+}
+
+.slide-caption h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.slide-caption p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.awesome-slider__content {
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+}
+
+
+/*Media Query for responsiveness*/
+
+@media screen and (max-width :429px) {
+    .my-container {
+        padding: 0px 10px
+    }
+}
+
+@media (max-width: 768px) {
+    .awesome-slider {
+        height: 250px;
+    }
+}
