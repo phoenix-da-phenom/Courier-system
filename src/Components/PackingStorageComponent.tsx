@@ -1,7 +1,7 @@
 import React from "react";
-import Icon1 from "../assets/icon01.png"
-import Icon2 from "../assets/icon02.png"
-import Icon3 from "../assets/icon03.png"
+import Icon1 from "../assets/icon01.png";
+import Icon2 from "../assets/icon02.png";
+import Icon3 from "../assets/icon03.png";
 
 export default function PackingStorageComponent() {
   return (
@@ -22,27 +22,36 @@ export default function PackingStorageComponent() {
             </div>
           </div>
         </div>
-        <div className="flex items-center "> 
-            <div className="">
-
-                <img src={Icon1}/>
-
-
-
+        <div className="flex items-center ">
+          <div className="">
+            <div className="bg-cyan-700 p-4">
+              <img src={Icon1} />
+              <h1>SEA SHIPPING</h1>
             </div>
-            <div>
-                
-                <img src={Icon2}/>
+            <article className="bg-amber-600 p-3">
+              <p>
+                We want to ensure tht ith's as easy as possible to use the site
+                to get.
+              </p>
+            </article>
+          </div>
+          <div className="bg-cyan-700 p-4" >
+            <img src={Icon2} />
+            <h1>AIR SHIPPING</h1>
+            <article className="bg-amber-600 p-3">
+              <p>Shipments moving whether you've worked with us for years completely new</p>
 
-                
-                </div>
-            <div>
-                
-             <img src={Icon3}/>
+            </article>
 
-                
-                </div>
+          </div>
+          <div className="bg-cyan-700 p-4">
+            <img src={Icon3} />
+            <h1>LAND SHIPPING</h1>
+          <article className="p2 bg-amber-600 p-3">
+            <p>International shipping. For further assistance, Please get in touch.</p>
 
+          </article>
+          </div>
         </div>
       </div>
     </div>
