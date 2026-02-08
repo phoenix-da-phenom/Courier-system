@@ -1,5 +1,6 @@
 import Caption from "./Components/Caption";
 import Carousel from "./Components/Carousel";
+import NumberCaption from "./Components/NumberCaption";
 import PackingStorageComponent from "./Components/PackingStorageComponent";
 import Navbar from "./Components/TopBar"
 import TopBar from './Components/TopBar';
@@ -14,8 +15,9 @@ function App() {
    <TopBar/>
    <Carousel/>
    <TrackerComponent/>
+   <NumberCaption desc="Packing & Storage" num={"01"}/>
    <PackingStorageComponent/>
-   <Caption title="Package & Strage"/>
+   {/* <Caption title="Package & Strage"/> */}
    
       
     </div>
