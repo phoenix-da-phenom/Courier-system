@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function PackingStorageComponent() {
   return (
-    <div>
+    <div className='my-26'>
 
         <div className='my-container'>
             <div>

@@ -1,3 +1,4 @@
+import Caption from "./Components/Caption";
 import Carousel from "./Components/Carousel";
 import PackingStorageComponent from "./Components/PackingStorageComponent";
 import Navbar from "./Components/TopBar"
@@ -13,7 +14,9 @@ function App() {
    <TopBar/>
    <Carousel/>
    <TrackerComponent/>
-   {/* <PackingStorageComponent/> */}
+   <PackingStorageComponent/>
+   <Caption title="Package & Strage"/>
+   
       
     </div>
   )
