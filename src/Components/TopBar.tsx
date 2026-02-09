@@ -4,6 +4,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { BsGlobeEuropeAfrica } from "react-icons/bs";
 import { IoChatbubbles } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { NavLink } from "react-router-dom";
 
 export default function TopBar() {
   return (
@@ -43,6 +44,8 @@ export default function TopBar() {
         <div className="lg:hidden block">
           <GiHamburgerMenu size={30} />
         </div>
+
+
       </div>
     </div>
   );
