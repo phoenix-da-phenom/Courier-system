@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import p1 from "../assets/tst1.jpg"
 import p2 from "../assets/tst2.jpg"
 import p3 from "../assets/tst3.jpg"
-import p4 from "../assets/tst4.jpg"
+
 
 const testimonials = [
   {
