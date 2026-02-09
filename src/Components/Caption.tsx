@@ -1,5 +1,5 @@
 
-import type { captionProps } from './Lib/data'
+import type { captionProps } from '../Lib/data'
 
 export default function Caption({title}:captionProps) {
   return (

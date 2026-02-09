@@ -4,6 +4,7 @@ import NumberCaption from "./Components/NumberCaption";
 import PackageStage from "./Components/PackageStage";
 import PackingStorageComponent from './Components/PackingStorageComponent';
 import RequestQuoteComponent from "./Components/RequestQuoteComponent";
+import TestimonialSection from "./Components/TestimonialSection";
 import Navbar from "./Components/TopBar"
 import TopBar from './Components/TopBar';
 import TrackerComponent from "./Components/TrackerComponent";
@@ -26,6 +27,7 @@ function App() {
    
    <RequestQuoteComponent/>
 < PackageStage/>
+<TestimonialSection/>
    
       
     </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import type { numberHeaderProps } from './Lib/data'
+import type { numberHeaderProps } from '../Lib/data'
 
 export default function NumberCaption({desc, num}: numberHeaderProps) {
   return (
