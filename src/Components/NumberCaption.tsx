@@ -1,7 +1,7 @@
 import React from 'react'
-import type { numberHeaderProps } from '../Lib/data'
+import type { NumberHeaderProps } from '../Lib/data'
 
-export default function NumberCaption({desc, num}: numberHeaderProps) {
+export default function NumberCaption({desc, num}: NumberHeaderProps) {
   return (
     <div className='my-container'>
       <h2 className=' text-5xl font-semibold text-gray-300'>{num}</h2>
