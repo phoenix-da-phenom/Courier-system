@@ -31,7 +31,11 @@ function App() {
 < PackageStage/>
 <TestimonialSection/>
 <LatestNews/>
+<div className="py-3 my-5">
+
 <SponsorComponent/>
+</div>
+
    
       
     </div>

@@ -76,6 +76,28 @@
     background-repeat: no-repeat !important;
 }
 
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-img {
+    display: inline-block;
+    height: 60px;
+    /* adjust */
+    animation: moveLeft 15s linear infinite;
+}
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 
 /*Media Query for responsiveness*/
 

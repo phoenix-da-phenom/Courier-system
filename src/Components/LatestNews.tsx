@@ -3,10 +3,27 @@ import Slider5 from "../assets/slide5.jpg";
 import Slider7 from "../assets/slide7.jpeg";
 
 const newsData = [
-  { img: Slider5 },
-  { img: Slider7 },
-  { img: Slider5 },
-  { img: Slider7 },
+  { id:1,
+    img: Slider5 ,
+    title:"Social and demographic information",
+    message:"There are no hidden costs associated with our transportation services."
+
+  },
+  { 
+    id:2,
+    img: Slider7,
+    title:"Team member to discuss our meeting",
+    message:"Offers you peace-of-mind that we’ll be on-hand to help whenever you need us."
+   },
+  { 
+    id:3,
+    img: Slider5,
+    title:"Financial Institutions changes control",
+    message:"As a company, we believe in operating as independent national carriers."
+   },
+  { id:4,
+    title:"",
+    img: Slider7 },
 ];
 
 export default function LatestNews() {
@@ -32,12 +49,11 @@ export default function LatestNews() {
             {/* Content */}
             <div className="flex flex-col gap-3 p-5">
               <h4 className="text-lg font-semibold leading-snug">
-                Social and demographic information
+                {item.title}
               </h4>
 
               <p className="text-sm text-gray-600">
-                There are no hidden costs associated with our transportation
-                services.
+               {item.message}
               </p>
 
               <a
