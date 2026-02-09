@@ -1,4 +1,5 @@
 
+import AboutusComponent from "./Components/AboutusComponent";
 import Carousel from "./Components/Carousel";
 import LatestNews from "./Components/LatestNews";
 import NumberCaption from "./Components/NumberCaption";
@@ -35,6 +36,7 @@ function App() {
 
 <SponsorComponent/>
 </div>
+<AboutusComponent/>
 
    
       
