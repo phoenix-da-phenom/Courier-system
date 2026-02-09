@@ -9,7 +9,7 @@ export default function AboutusComponent() {
                 <div className="bg-amber-600 p-8">
 
                     <h2 className="font-bold text-white py-4">ABOUT Compecinp Logistics</h2>
-                      <div className="w-100">
+                      <div className="w-full">
                         <p>We have trained, experienced experts available for our full range of service
                             Including reefer, out-of-gauge, breakbulk and each of our trade services- each ooperating in tande, with your business. This gives us the ability to uphold the personal service we're globally recognized 
                         </p>
