@@ -1,4 +1,4 @@
-import React from "react";
+
 import Logo from "../assets/logo.png";
 import { CiLocationOn } from "react-icons/ci";
 import { BsGlobeEuropeAfrica } from "react-icons/bs";

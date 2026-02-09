@@ -1,11 +1,11 @@
-import Caption from "./Components/Caption";
+
 import Carousel from "./Components/Carousel";
 import NumberCaption from "./Components/NumberCaption";
 import PackageStage from "./Components/PackageStage";
 import PackingStorageComponent from './Components/PackingStorageComponent';
 import RequestQuoteComponent from "./Components/RequestQuoteComponent";
 import TestimonialSection from "./Components/TestimonialSection";
-import Navbar from "./Components/TopBar"
+
 import TopBar from './Components/TopBar';
 import TrackerComponent from "./Components/TrackerComponent";
 

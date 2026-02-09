@@ -1,4 +1,4 @@
-import React from 'react'
+
 import StepComponent from './StepComponent'
 
 export default function PackageStage() {

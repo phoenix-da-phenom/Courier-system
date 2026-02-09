@@ -1,4 +1,4 @@
-import React from 'react'
+
 import type { NumberHeaderProps } from '../Lib/data'
 
 export default function NumberCaption({desc, num}: NumberHeaderProps) {
