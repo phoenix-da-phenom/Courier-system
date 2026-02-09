@@ -7,19 +7,19 @@ import p4 from "../assets/tst4.jpg"
 
 const testimonials = [
   {
-    name: "Daniel Okoye",
+    name: "Hessica Owen",
     role: "Business Owner",
     text: "Their delivery speed is insane. My packages arrive earlier than expected every single time.",
     image: p1
   },
   {
-    name: "Aisha Bello",
+    name: "Larry Glenn",
     role: "Online Vendor",
     text: "Reliable, secure, and professional. I trust them with all my customer deliveries.",
     image: p2
   },
   {
-    name: "Michael Ade",
+    name: "Michael Xin",
     role: "Logistics Manager",
     text: "Tracking is accurate and support is responsive. Easily the best courier service we’ve used.",
     image:p3

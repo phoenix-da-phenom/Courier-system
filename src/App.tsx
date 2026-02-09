@@ -1,9 +1,11 @@
 
 import Carousel from "./Components/Carousel";
+import LatestNews from "./Components/LatestNews";
 import NumberCaption from "./Components/NumberCaption";
 import PackageStage from "./Components/PackageStage";
 import PackingStorageComponent from './Components/PackingStorageComponent';
 import RequestQuoteComponent from "./Components/RequestQuoteComponent";
+import SponsorComponent from "./Components/SponsorComponent";
 import TestimonialSection from "./Components/TestimonialSection";
 
 import TopBar from './Components/TopBar';
@@ -28,6 +30,8 @@ function App() {
    <RequestQuoteComponent/>
 < PackageStage/>
 <TestimonialSection/>
+<LatestNews/>
+<SponsorComponent/>
    
       
     </div>
