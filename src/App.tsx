@@ -1,7 +1,9 @@
 import Caption from "./Components/Caption";
 import Carousel from "./Components/Carousel";
 import NumberCaption from "./Components/NumberCaption";
-import PackingStorageComponent from "./Components/PackingStorageComponent";
+import PackageStage from "./Components/PackageStage";
+import PackingStorageComponent from './Components/PackingStorageComponent';
+import RequestQuoteComponent from "./Components/RequestQuoteComponent";
 import Navbar from "./Components/TopBar"
 import TopBar from './Components/TopBar';
 import TrackerComponent from "./Components/TrackerComponent";
@@ -15,9 +17,15 @@ function App() {
    <TopBar/>
    <Carousel/>
    <TrackerComponent/>
-   <NumberCaption desc="Packing & Storage" num={"01"}/>
+   <div className="mt-25">
+    <NumberCaption desc="Packing & Storage" num={"01"}/>
+   </div>
+   
    <PackingStorageComponent/>
    {/* <Caption title="Package & Strage"/> */}
+   
+   <RequestQuoteComponent/>
+< PackageStage/>
    
       
     </div>
