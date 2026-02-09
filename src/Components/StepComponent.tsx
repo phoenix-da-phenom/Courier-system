@@ -1,4 +1,4 @@
-import React from "react";
+
 import NumberCaption from "./NumberCaption";
 
 export default function StepComponent() {

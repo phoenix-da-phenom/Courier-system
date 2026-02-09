@@ -1,4 +1,4 @@
-import React from "react";
+
 import peopleHoldingBoxes from "../assets/4690a05b-0561-4e7b-82a9-a9e9feed56eb.webp";
 
 export default function RequestQuoteComponent() {

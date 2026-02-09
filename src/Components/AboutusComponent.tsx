@@ -1,6 +1,6 @@
 import { GiTrophyCup } from "react-icons/gi";
 import { TbUmbrellaFilled } from "react-icons/tb";
-import Slide7 from "../assets/slide7.jpeg"
+// import Slide7 from "../assets/slide7.jpeg"
 
 export default function AboutusComponent() {
   return (
