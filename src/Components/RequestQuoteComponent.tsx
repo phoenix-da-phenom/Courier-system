@@ -5,10 +5,10 @@ import axiosInstance from "../Lib/axiosInstance";
 import { API_PATHS } from "../Lib/apiPath";
 import type { AxiosError } from "axios";
 
-interface QuoteResponse {
-  message: string;
-  [key: string]: any; // in case API sends extra data
-}
+// interface QuoteResponse {
+//   message: string;
+//   [key: string]: any; // in case API sends extra data
+// }
 
 export default function RequestQuoteComponent() {
   const [flightType, setFlightType] = useState<string>("");
@@ -20,7 +20,7 @@ export default function RequestQuoteComponent() {
     null,
   );
   const[loading, setLoading]= useState<boolean>(false)
-  const notify = (msg: string) => toast(msg);
+ 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {

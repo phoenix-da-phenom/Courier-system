@@ -1,5 +1,5 @@
-import {Navigate} from "react-router-dom"
-import { useEffect } from "react"
+// import {Navigate} from "react-router-dom"
+// import { useEffect } from "react"
 import type { publicRouteProps } from "../Lib/data"
 
 const PublicRoute = ({children}: publicRouteProps)=>{
