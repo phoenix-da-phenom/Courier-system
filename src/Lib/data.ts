@@ -6,3 +6,7 @@ export type NumberHeaderProps = {
   desc: string
   num: string
 }
+
+export type publicRouteProps={
+  children: React.ReactNode
+}
