@@ -14,7 +14,7 @@ import TrackerComponent from "../Components/TrackerComponent";
 
 function Home() {
   return (
-    <div className="bg-background py-3">
+    <div className="bg-background pt-3">
       <TopBar />
       <Carousel />
       <TrackerComponent />

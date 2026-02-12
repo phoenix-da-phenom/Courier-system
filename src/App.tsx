@@ -3,7 +3,7 @@ import AppRoutes from "./Routes/AppRoute";
 
 function App() {
   return (
-    <div className="bg-background py-3">
+    <div className="bg-background pt-3">
     <AppRoutes/>
     </div>
   );

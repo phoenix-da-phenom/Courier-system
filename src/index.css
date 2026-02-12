@@ -1,8 +1,9 @@
 :root {
     --background: #ebeae8;
     /*rgba(235, 234, 232)*/
-    --secondary: #d89067/*rgba(30, 132, 139)*/
-    --primary: #1e848b
+    --secondary: #d89067;
+    /*rgba(30, 132, 139)*/
+    --primary: #1e848b;
 }
 
 
