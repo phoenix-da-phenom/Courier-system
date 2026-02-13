@@ -10,6 +10,10 @@ const Dashboard = () => {
 
     console.log(user)
 
+    const logOutUser=()=>{
+        logout()
+    }
+
 
   return (
     <div>
@@ -20,7 +24,7 @@ const Dashboard = () => {
             <h4>List of created Parcels</h4>
 
         </div>
-       
+       <button onClick={logOutUser} className="bg-primary px-4 py-2 rounded-md">Logout</button>
     </div>
   )
 }
