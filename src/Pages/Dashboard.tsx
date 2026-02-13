@@ -1,8 +1,14 @@
 //import { useState } from "react"
 
+import { useAuth } from "../Hooks/useAuth"
+
 
 const Dashboard = () => {
     //const [parcelList, setParcelList]= useState(null)
+    const {user, logout}= useAuth();
+
+
+    console.log(user)
 
 
   return (
