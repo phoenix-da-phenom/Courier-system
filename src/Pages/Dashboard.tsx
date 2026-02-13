@@ -1,32 +1,152 @@
 //import { useState } from "react"
 
-import { useAuth } from "../Hooks/useAuth"
+import { useState } from "react";
+import { useAuth } from "../Hooks/useAuth";
+import InventoryModal from "../Components/InventoryModal";
 
 
+const shipments = [
+  { id: 1, tracking: "T23Hwe3323", location: "Abuja", status: "active" },
+  { id: 2, tracking: "T88Jke9921", location: "Lagos", status: "pending" },
+  { id: 3, tracking: "T77Yhd4412", location: "Kano", status: "cancelled" },
+  { id: 4, tracking: "T45Klm7788", location: "Port Harcourt", status: "active" },
+];
 const Dashboard = () => {
-    //const [parcelList, setParcelList]= useState(null)
-    const {user, logout}= useAuth();
-
-
-    console.log(user)
-
-    const logOutUser=()=>{
-        logout()
+      const [isOpen, setIsOpen] = useState(false)
+     const getStatusStyles = (status: string) => {
+    switch (status) {
+      case "active":
+        return {
+          dot: "bg-green-500",
+          text: "text-green-600",
+          label: "Active",
+        };
+      case "pending":
+        return {
+          dot: "bg-yellow-400",
+          text: "text-yellow-600",
+          label: "Pending",
+        };
+      case "cancelled":
+        return {
+          dot: "bg-red-500",
+          text: "text-red-600",
+          label: "Cancelled",
+        };
+      default:
+        return {
+          dot: "bg-gray-400",
+          text: "text-gray-600",
+          label: status,
+        };
     }
+  };
+  //const [parcelList, setParcelList]= useState(null)
+  const { user, logout } = useAuth();
 
+  console.log(user);
+
+  const logOutUser = () => {
+    logout();
+  };
 
   return (
-    <div>
-        <div>
-            <h1>Welcome to your Control Panel</h1>
-        </div>
-        <div>
-            <h4>List of created Parcels</h4>
+    <div className="my-container background-gradient">
+      <div className="py-5">
+        <h1 className="text-white font-bold text-center text-3xl">
+          Welcome to your Control Panel
+        </h1>
+      </div>
+      <div>
+        <h4 className="text-2xl font-bold text-white mb-4">
+          List of created Parcels
+        </h4>
+        <div className="flex flex-col lg:flex-row justify-between gap-15">
 
-        </div>
-       <button onClick={logOutUser} className="bg-primary px-4 py-2 rounded-md">Logout</button>
+    <div className="w-full overflow-x-auto rounded-xl shadow-lg bg-white">
+      <table className="min-w-full text-sm text-left">
+        <thead className="bg-gray-100 text-gray-600 uppercase text-xs tracking-wider">
+          <tr>
+            <th className="px-6 py-4">Tracking No</th>
+            <th className="px-6 py-4 hidden md:table-cell">
+              Current Location
+            </th>
+            <th className="px-6 py-4">Status</th>
+            <th className="px-6 py-4 text-right">Action</th>
+          </tr>
+        </thead>
+
+        <tbody className="divide-y">
+          {shipments.map((item) => {
+            const statusStyle = getStatusStyles(item.status);
+
+            return (
+              <tr
+                key={item.id}
+                className="hover:bg-gray-50 transition duration-200"
+              >
+                <td className="px-6 py-4 font-medium text-gray-800">
+                  {item.tracking}
+                </td>
+
+                <td className="px-6 py-4 hidden md:table-cell text-gray-600">
+                  {item.location}
+                </td>
+
+                <td className="px-6 py-4">
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`w-3 h-3 rounded-full border border-gray-200 ${statusStyle.dot}`}
+                    ></span>
+                    <span className={`font-medium ${statusStyle.text}`}>
+                      {statusStyle.label}
+                    </span>
+                  </div>
+                </td>
+
+                <td className="px-6 py-4 text-right">
+                  <button className="px-4 py-1.5 rounded-md bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 hover:border-red-400 transition duration-200">
+                    Cancel
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
-  )
-}
+   <div className="bg-white rounded-2xl shadow-md p-6 w-full max-w-sm">
+  <h2 className="text-lg font-semibold text-gray-800 mb-6">
+    Quick Actions
+  </h2>
 
-export default Dashboard
+  <div className="flex flex-col gap-4">
+    <button
+     onClick={() => setIsOpen(true)} 
+    className="w-full py-3 rounded-xl bg-primary text-white font-medium hover:opacity-90 transition duration-200 shadow-sm">
+      Create Parcel
+    </button>
+
+    <button className="w-full py-3 rounded-xl border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition duration-200">
+      Update Location
+    </button>
+  </div>
+</div>
+
+        </div>
+      </div>
+      <button
+        onClick={logOutUser}
+        className="fixed bottom-6 left-6 bg-primary text-white px-4 py-3 rounded-full shadow-lg hover:scale-105 transition-all duration-300"
+      >
+        Logout
+      </button>
+      <InventoryModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
+    </div>
+  );
+};
+
+export default Dashboard;
