@@ -18,6 +18,7 @@ export default function AppRoutes() {
           <Route path="/tracking" element={<TrackingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
+         
         </Route>
 
         {/* Private routes */}

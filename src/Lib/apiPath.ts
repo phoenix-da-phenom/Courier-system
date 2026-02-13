@@ -10,7 +10,8 @@ export const API_PATHS ={
         INVENTORY:{
             INSERT: "/api/v1/inventory",
             TRACK:"/api/v1/track",
-            UPDATE:"/api/v1/update"
+            UPDATE:"/api/v1/update",
+            GETALL:"/api/v1/inventory"
 
         },
         QUOTE:{

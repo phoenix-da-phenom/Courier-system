@@ -5,6 +5,7 @@ import { API_PATHS } from "../Lib/apiPath";
 type InventoryModalProps = {
   isOpen: boolean;
   onClose: () => void;
+  onSuccess: () => void;
 };
 
 type InventoryFormData = {
@@ -18,7 +19,11 @@ type InventoryFormData = {
   };
 };
 
-export default function InventoryModal({ isOpen, onClose }: InventoryModalProps) {
+export default function InventoryModal({
+  isOpen,
+  onClose,
+  onSuccess,
+}: InventoryModalProps) {
   const [formData, setFormData] = useState<InventoryFormData>({
     item_name: "",
     quantity: 0,
@@ -29,6 +34,7 @@ export default function InventoryModal({ isOpen, onClose }: InventoryModalProps)
       name: "",
     },
   });
+  const [isloading, setIsLoading] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -53,14 +59,23 @@ export default function InventoryModal({ isOpen, onClose }: InventoryModalProps)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setIsLoading(true);
     try {
-      await axiosInstance.post(API_PATHS.INVENTORY.INSERT, formData);
+      console.log("try to post");
+      const response = await axiosInstance.post(
+        API_PATHS.INVENTORY.INSERT,
+        formData,
+      );
       alert("Inventory added successfully!");
-      onClose();
+      if (response.data.success) {
+        onSuccess(); // refresh table
+        onClose(); // close modal
+      }
     } catch (error) {
       console.error(error);
       alert("Something went wrong!");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -85,7 +100,7 @@ export default function InventoryModal({ isOpen, onClose }: InventoryModalProps)
             type="number"
             name="quantity"
             placeholder="Quantity"
-            value={formData.quantity}
+            value={formData.quantity > 0 ? formData.quantity : ""}
             onChange={handleChange}
             className="border p-2 rounded"
           />
@@ -93,7 +108,7 @@ export default function InventoryModal({ isOpen, onClose }: InventoryModalProps)
           <input
             type="text"
             name="origin"
-            placeholder="Origin"
+            placeholder="Origin e.g Berlin, Germany"
             value={formData.origin}
             onChange={handleChange}
             className="border p-2 rounded"
@@ -102,7 +117,7 @@ export default function InventoryModal({ isOpen, onClose }: InventoryModalProps)
           <input
             type="text"
             name="destination"
-            placeholder="Destination"
+            placeholder="Destination e.g Texas, USA"
             value={formData.destination}
             onChange={handleChange}
             className="border p-2 rounded"
@@ -111,7 +126,7 @@ export default function InventoryModal({ isOpen, onClose }: InventoryModalProps)
           <input
             type="text"
             name="current_position"
-            placeholder="Current Position"
+            placeholder="Current Position e.g Seoul, South Korea"
             value={formData.current_position}
             onChange={handleChange}
             className="border p-2 rounded"
@@ -136,10 +151,11 @@ export default function InventoryModal({ isOpen, onClose }: InventoryModalProps)
             </button>
 
             <button
+              disabled={isloading}
               type="submit"
               className="bg-blue-600 px-4 py-2 rounded text-white"
             >
-              Submit
+              {isloading ? "Submitting..." : "Submit"}
             </button>
           </div>
         </form>

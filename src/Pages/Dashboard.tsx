@@ -1,19 +1,58 @@
 //import { useState } from "react"
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "../Hooks/useAuth";
 import InventoryModal from "../Components/InventoryModal";
+import axiosInstance from "../Lib/axiosInstance";
+import { API_PATHS } from "../Lib/apiPath";
 
+type Inventory = {
+  _id: string;
+  uuid: string;
+  tracknumber: string;
+  itemname: string;
+  quantity: number;
+  origin: string;
+  destination: string;
+  currentposition: string;
+  location: {
+    name: string;
+    long: number;
+    lat: number;
+  };
+  createdAt: string;
+  updatedAt: string;
+  status?: string; // you'll add this later in backend
+};
 
-const shipments = [
-  { id: 1, tracking: "T23Hwe3323", location: "Abuja", status: "active" },
-  { id: 2, tracking: "T88Jke9921", location: "Lagos", status: "pending" },
-  { id: 3, tracking: "T77Yhd4412", location: "Kano", status: "cancelled" },
-  { id: 4, tracking: "T45Klm7788", location: "Port Harcourt", status: "active" },
-];
 const Dashboard = () => {
-      const [isOpen, setIsOpen] = useState(false)
-     const getStatusStyles = (status: string) => {
+  const [parcelList, setParcelList] = useState<Inventory[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchInventories = async () => {
+  try {
+    setLoading(true);
+
+    const response = await axiosInstance.get(API_PATHS.INVENTORY.GETALL);
+
+    if (response.data.success) {
+      setParcelList(response.data.data);
+    }
+  } catch (error) {
+    console.error("Error fetching inventories:", error);
+  } finally {
+    setLoading(false);
+  }
+};
+
+
+useEffect(() => {
+  fetchInventories();
+}, []);
+
+
+  const [isOpen, setIsOpen] = useState(false);
+  const getStatusStyles = (status: string) => {
     switch (status) {
       case "active":
         return {
@@ -62,77 +101,86 @@ const Dashboard = () => {
           List of created Parcels
         </h4>
         <div className="flex flex-col lg:flex-row justify-between gap-15">
+          <div className="w-full overflow-x-auto rounded-xl shadow-lg bg-white">
+            <table className="min-w-full text-sm text-left">
+              <thead className="bg-gray-100 text-gray-600 uppercase text-xs tracking-wider">
+                <tr>
+                  <th className="px-6 py-4">Tracking No</th>
+                  <th className="px-6 py-4 hidden md:table-cell">
+                    Current Location
+                  </th>
+                  <th className="px-6 py-4">Status</th>
+                  <th className="px-6 py-4 text-right">Action</th>
+                </tr>
+              </thead>
 
-    <div className="w-full overflow-x-auto rounded-xl shadow-lg bg-white">
-      <table className="min-w-full text-sm text-left">
-        <thead className="bg-gray-100 text-gray-600 uppercase text-xs tracking-wider">
-          <tr>
-            <th className="px-6 py-4">Tracking No</th>
-            <th className="px-6 py-4 hidden md:table-cell">
-              Current Location
-            </th>
-            <th className="px-6 py-4">Status</th>
-            <th className="px-6 py-4 text-right">Action</th>
-          </tr>
-        </thead>
+              <tbody className="divide-y">
+                {parcelList.map((item) => {
+                //   const statusStyle = getStatusStyles(item?.status);
 
-        <tbody className="divide-y">
-          {shipments.map((item) => {
-            const statusStyle = getStatusStyles(item.status);
+                  return (
+                    <tr
+                      key={item._id}
+                      className="hover:bg-gray-50 transition duration-200"
+                    >
+                      <td className="px-6 py-4 font-medium text-gray-800">
+                        {item.tracknumber}
+                      </td>
 
-            return (
-              <tr
-                key={item.id}
-                className="hover:bg-gray-50 transition duration-200"
+                      <td className="px-6 py-4 hidden md:table-cell text-gray-600">
+                        {item.currentposition}
+                      </td>
+
+                      <td className="px-6 py-4">
+                        {(() => {
+                          const statusStyle = getStatusStyles(
+                            item.status || "pending",
+                          );
+
+                          return (
+                            <div className="flex items-center gap-2">
+                              <span
+                                className={`w-3 h-3 rounded-full border border-gray-200 ${statusStyle.dot}`}
+                              ></span>
+                              <span
+                                className={`font-medium ${statusStyle.text}`}
+                              >
+                                {statusStyle.label}
+                              </span>
+                            </div>
+                          );
+                        })()}
+                      </td>
+
+                      <td className="px-6 py-4 text-right">
+                        <button className="px-4 py-1.5 rounded-md bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 hover:border-red-400 transition duration-200">
+                          Cancel
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <div className="bg-white rounded-2xl shadow-md p-6 w-full max-w-sm mb-15">
+            <h2 className="text-lg font-semibold text-gray-800 mb-6">
+              Quick Actions
+            </h2>
+
+            <div className="flex flex-col gap-4">
+              <button
+                onClick={() => setIsOpen(true)}
+                className="w-full py-3 rounded-xl bg-primary text-white font-medium hover:opacity-90 transition duration-200 shadow-sm"
               >
-                <td className="px-6 py-4 font-medium text-gray-800">
-                  {item.tracking}
-                </td>
+                Create Parcel
+              </button>
 
-                <td className="px-6 py-4 hidden md:table-cell text-gray-600">
-                  {item.location}
-                </td>
-
-                <td className="px-6 py-4">
-                  <div className="flex items-center gap-2">
-                    <span
-                      className={`w-3 h-3 rounded-full border border-gray-200 ${statusStyle.dot}`}
-                    ></span>
-                    <span className={`font-medium ${statusStyle.text}`}>
-                      {statusStyle.label}
-                    </span>
-                  </div>
-                </td>
-
-                <td className="px-6 py-4 text-right">
-                  <button className="px-4 py-1.5 rounded-md bg-red-50 text-red-600 border border-red-200 hover:bg-red-100 hover:border-red-400 transition duration-200">
-                    Cancel
-                  </button>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
-   <div className="bg-white rounded-2xl shadow-md p-6 w-full max-w-sm">
-  <h2 className="text-lg font-semibold text-gray-800 mb-6">
-    Quick Actions
-  </h2>
-
-  <div className="flex flex-col gap-4">
-    <button
-     onClick={() => setIsOpen(true)} 
-    className="w-full py-3 rounded-xl bg-primary text-white font-medium hover:opacity-90 transition duration-200 shadow-sm">
-      Create Parcel
-    </button>
-
-    <button className="w-full py-3 rounded-xl border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition duration-200">
-      Update Location
-    </button>
-  </div>
-</div>
-
+              <button className="w-full py-3 rounded-xl border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition duration-200">
+                Update Location
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <button
@@ -141,10 +189,7 @@ const Dashboard = () => {
       >
         Logout
       </button>
-      <InventoryModal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-      />
+      <InventoryModal isOpen={isOpen} onClose={() => setIsOpen(false)}  onSuccess={fetchInventories}/>
     </div>
   );
 };
